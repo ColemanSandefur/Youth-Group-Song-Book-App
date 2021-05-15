@@ -34,7 +34,17 @@ export default class Song extends PureComponent<{title: string, lyrics: string[]
         super(props);
 
         this.state = {
-            output: []
+            output: 
+                this.props.lyrics.map((value, index) => {
+                    return (
+                        <Text 
+                            key={value + index}
+                            style={SongStyle.Lyrics}
+                        >
+                            {value}
+                        </Text>
+                    );
+                })
         };
     }
 
@@ -64,7 +74,17 @@ export default class Song extends PureComponent<{title: string, lyrics: string[]
         return (
             <View style={SongStyle.Song}>
                 <Text style={SongStyle.Title}>{this.props.title}</Text>
-                {this.state.output}
+                {/* {this.state.output} */}
+                {this.props.lyrics.map((value, index) => {
+                    return (
+                        <Text 
+                            key={value + index}
+                            style={SongStyle.Lyrics}
+                        >
+                            {value}
+                        </Text>
+                    );
+                })}
             </View>
         )
     }

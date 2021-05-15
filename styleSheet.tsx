@@ -32,6 +32,19 @@ const styles = StyleSheet.create({
     }
 });
 
+const CustomDrawer = StyleSheet.create({
+    CustomDrawer: {
+        
+    },
+
+    DrawerItem: {
+
+    },
+
+    DrawerSearch: {
+    }
+})
+
 
 export default styles;
-export {Song};
+export {Song, CustomDrawer};

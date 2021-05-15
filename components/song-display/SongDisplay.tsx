@@ -10,18 +10,9 @@ let songs: {title: string, lyrics: string[]}[] = JSONSongs;
 
 
 export default function SongDisplay(props: {numToRender: number, songDisplayRef?: React.RefObject<FlatList<{title: string,lyrics: string[]}>>, songs: {title: string, lyrics: string[]}[]}) {
-    // let [refreshing, setRefreshing] = useState(false);
-    let [flatList, setFlatList] = useState<JSX.Element>(<Text></Text>);
-    let refreshing = false;
+    let [flatList, setFlatList] = useState<JSX.Element>(<Text style={{textAlign: "center"}}>LOADING</Text>);
 
     const renderingFunction = (data: any) => {
-        if (!refreshing) {
-            refreshing = true;
-            console.log("rendering items");
-            setTimeout(() => {
-                refreshing = false;
-            }, 3000);
-        }
         let {item, index} = data;
         return <Song title={(index + 1) + ": " + item.title} lyrics={item.lyrics}/>
     }
