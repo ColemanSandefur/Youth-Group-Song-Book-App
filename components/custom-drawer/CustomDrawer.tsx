@@ -1,17 +1,18 @@
 import "react-native-gesture-handler";
 import * as React from 'react';
-import { DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { FlatList, Platform, ScrollView, Text, View } from 'react-native';
+import { DrawerContentComponentProps, DrawerContentOptions, DrawerItem } from "@react-navigation/drawer";
+import { FlatList, Platform, ScrollView, Text } from 'react-native';
 import {songs} from '../song-display/SongDisplay';
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { SearchBar } from 'react-native-elements';
 import {CustomDrawer as CustomDrawerStyle} from "../../styleSheet"
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const formatSongs = (props: {
   songs: {title: string, number: number}[],
   onItemPress: (item: {title: string}, index: number) => void
 }) => {
+  console.log("updating");
   let formatted= props.songs.map((song) => {
     return ({
       name: song.title,
@@ -36,7 +37,7 @@ const formatSongs = (props: {
       formatted.splice(i, 0, {
         "name": startingChar,
         dom: (
-          <Text key={startingChar + i}>{startingChar.toUpperCase()}</Text>
+          <Text key={startingChar + i} style={{...CustomDrawerStyle.DrawerHeader, textAlign: "center", fontWeight: "bold", fontSize: 20}}>{startingChar.toUpperCase()}</Text>
         )
       })
     }
@@ -106,8 +107,6 @@ export default function CustomDrawer(props: {drawerProps: DrawerContentComponent
     return "default";
   }
 
-  const insets = useSafeAreaInsets();
-
   return (
     <>
       <SafeAreaView style={{}}>
@@ -119,9 +118,6 @@ export default function CustomDrawer(props: {drawerProps: DrawerContentComponent
           style={CustomDrawerStyle.DrawerSearch}
         />
       </SafeAreaView>
-      {/* <DrawerContentScrollView contentContainerStyle={{}} style={{...CustomDrawerStyle.CustomDrawer}}>
-        {output}
-      </DrawerContentScrollView> */}
       <ScrollView>
         {output}
       </ScrollView>

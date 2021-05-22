@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text } from "react-native";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { FlatList, Text } from "react-native";
 import JSONSongs from "../../songs.json";
-import styles, {Song as SongStyle} from "../../styleSheet";
+import styles from "../../styleSheet";
 import Song from "./Song"
 
 let songs: {title: string, lyrics: string[]}[] = JSONSongs;

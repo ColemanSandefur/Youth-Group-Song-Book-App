@@ -17,11 +17,13 @@ const Song = StyleSheet.create({
     Title: {
         fontSize: 32,
         fontWeight: "bold",
-        color: "rgb(59, 59, 59)"
+        color: "rgb(59, 59, 59)",
+        paddingBottom: 20
     },
     Lyrics: {
         fontSize: 20,
-        color: "rgb(66, 66, 66)"
+        color: "rgb(66, 66, 66)",
+        paddingVertical: 5
     }
 })
 
@@ -42,6 +44,10 @@ const CustomDrawer = StyleSheet.create({
     },
 
     DrawerSearch: {
+    },
+
+    DrawerHeader: {
+        color: "rgb(59, 59, 59)"
     }
 })
 
