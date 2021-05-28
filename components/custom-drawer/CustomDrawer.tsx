@@ -50,15 +50,24 @@ const formatSongs = (props: {
   return output;
 }
 
+const cleanse = (search: string) => {
+  return search.replace(/[^\w\d\s]/g, "").toLowerCase();
+}
+
 const matches = (search: string, song: {title: string,lyrics: string[], number: number}) => {
-  search = search.toLowerCase();
-  return song.title.toLowerCase().includes(search) || song.number + 1 === Number.parseInt(search);
+
+  //remove unnecessary characters like commas and periods
+  let title = cleanse(song.title);
+
+  return title.includes(search) || song.number + 1 === Number.parseInt(search);
 }
 
 const searchSongs = (search: string, songs: {title: string,lyrics: string[]}[]) => {
   let output = songs.slice().map((value, index) => {
     return {...value, number: index};
   });
+
+  search = cleanse(search);
   
   for (let i = 0; i < output.length; i++) {
     if (!matches(search, output[i])) {
